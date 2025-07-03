@@ -10,9 +10,14 @@ const tourRoutes = require('./routes/tours');
 const app = express();
 
 // ✅ Allow frontend origin for CORS
+const allowedOrigins = [
+  'http://localhost:3000',
+  'https://product-tour-app.netlify.app'
+];
+
 app.use(cors({
-  origin: ['https://product-tour-app.netlify.app'],
-  credentials: true,
+  origin: allowedOrigins,
+  credentials: true
 }));
 
 // 🔧 Increase payload limit to handle base64 images
