@@ -9,8 +9,11 @@ const tourRoutes = require('./routes/tours');
 
 const app = express();
 
-// Middleware
-app.use(cors());
+// ✅ Allow frontend origin for CORS
+app.use(cors({
+  origin: ['https://product-tour-app.netlify.app'],
+  credentials: true,
+}));
 
 // 🔧 Increase payload limit to handle base64 images
 app.use(express.json({ limit: '10mb' }));
