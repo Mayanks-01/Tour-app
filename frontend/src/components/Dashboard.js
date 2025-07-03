@@ -2,6 +2,9 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
+const API_BASE = process.env.REACT_APP_API_BASE;
+const FRONTEND_URL = process.env.REACT_APP_FRONTEND_URL || 'http://localhost:3000';
+
 const Dashboard = () => {
   const navigate = useNavigate();
   const [tours, setTours] = useState([]);
@@ -10,7 +13,7 @@ const Dashboard = () => {
     const fetchTours = async () => {
       try {
         const token = localStorage.getItem('token');
-        const res = await axios.get('http://localhost:5000/api/tours/my-tours', {
+        const res = await axios.get(`${API_BASE}/api/tours/my-tours`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         setTours(res.data);
@@ -26,7 +29,7 @@ const Dashboard = () => {
     if (!window.confirm('Are you sure you want to delete this tour?')) return;
     try {
       const token = localStorage.getItem('token');
-      await axios.delete(`http://localhost:5000/api/tours/${id}`, {
+      await axios.delete(`${API_BASE}/api/tours/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setTours(tours.filter((tour) => tour._id !== id));
@@ -87,7 +90,7 @@ const Dashboard = () => {
 
                 {tour.isPublic && (
                   <a
-                    href={`http://localhost:3000/public/${tour._id}`}
+                    href={`${FRONTEND_URL}/public/${tour._id}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="block mt-4 text-blue-600 text-sm underline hover:text-blue-800 transition"
