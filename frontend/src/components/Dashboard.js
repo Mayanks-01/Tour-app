@@ -2,8 +2,9 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
+// ✅ Environment variables
 const API_BASE = process.env.REACT_APP_API_BASE;
-const FRONTEND_URL = process.env.REACT_APP_FRONTEND_URL || 'http://localhost:3000';
+const FRONTEND_URL = process.env.REACT_APP_FRONTEND_URL;
 
 const Dashboard = () => {
   const navigate = useNavigate();
@@ -44,7 +45,9 @@ const Dashboard = () => {
       <h2 className="text-4xl font-bold text-center text-blue-700 mb-10">📂 My Tours</h2>
 
       {tours.length === 0 ? (
-        <p className="text-gray-500 text-lg text-center">No tours found. Start by creating your first one!</p>
+        <p className="text-gray-500 text-lg text-center">
+          No tours found. Start by creating your first one!
+        </p>
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {tours.map((tour) => (
