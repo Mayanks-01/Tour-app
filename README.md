@@ -30,7 +30,7 @@ A modern web application to create and preview product tours using screenshots a
 ### ⚙️ 1. Clone the Repo
 
 ```bash
-git clone https://github.com/your-username/product-tour-app.git
+git clone https://github.com/Mayanks-01/Tour-app.git
 cd product-tour-app
 
 2. Install Dependencies
